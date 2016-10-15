@@ -17,7 +17,7 @@ export class CityService{
                     "district":"Kabol",
                     "name":"Kabul",
                     "population":1780000,
-                    "links": {  "self":{"href":"http://localhost:8080/cities/1"},
+                    "_links": {  "self":{"href":"http://localhost:8080/cities/1"},
                                 "city":{"href":"http://localhost:8080/cities/1"},
                                 "country":{"href":"http://localhost:8080/cities/1/country"}
                             }
@@ -55,6 +55,8 @@ export class CityService{
 
     getCityListPrev(cl:CityList): Observable<CityList>{
         // special case as our REST API only handles next
+        // prev needs to take one off the current page
+        // and substute it into the next page URL
         let url=cl._links.next.href;
         let nextPage:string;
         if (cl.page.num == cl.page.totalPages - 1)
@@ -88,22 +90,14 @@ export class CityService{
     }
 }
 
-function toCity(r:any): City{
-    //let r = response.json();
-    let city = <City>({
-        district: r.district,
-        name: r.name,
-        population: r.population,
-        links:r._links
-    });
-    printCityToConsole("Mapped City: ",city);
-    var arr = String(city.links.self.href).split("/");
+function toCity(r:Response): City{
+    let city = <City><any> r;
+    var arr = String(city._links.self.href).split("/");
     city.id = parseInt(arr[arr.length-1]);
-    console.log('Parsed city:', city);
     return city;
 }
 
-function mapCityList(response:any): CityList{
+function mapCityList(response:Response): CityList{
     let cityList:CityList = ({
         cities:mapCityArray(response),
         _links:mapCityListLinks(response),
@@ -111,13 +105,18 @@ function mapCityList(response:any): CityList{
     });
     return cityList;
 }
+
+// helper functions to convert JSON to our model
 function mapCity(response:Response): City{
     return toCity(response.json()); 
 }
-function mapCityArray(r:any): City[]{
+function mapCityArray(r:Response): City[]{
+    // can't just cast to City[] as our REST API doesn't return the id explicitly
+    // instead it is contained within the link to self so needs special treatment
     return r.json()._embedded.cities.map(toCity);
+    
 }
-function mapPage(r:any): ListInfo{
+function mapPage(r:Response): ListInfo{
     let page$ = r.json().page;
       return ({
         totalPages:page$.totalPages,
@@ -126,7 +125,7 @@ function mapPage(r:any): ListInfo{
         totalElements:page$.totalElements
     });
  }
-function mapCityListLinks(r:any): any{
+function mapCityListLinks(r:Response): any{
     let links$ = r.json()._links;
     return ({first : {href:links$.first.href},
             next : {href: links$.next==undefined ? links$.last.href : links$.next.href}, // special case - next is undefined if this is the last page
