@@ -1,12 +1,19 @@
-<div *ngIf="city">
-    <h2>{{city.name}} details</h2>
-    <div><label>id: </label>{{city.id}}</div>
-    <div>
+<div *ngIf="city" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{city.name}} details <div class="cityId"><label>id: </label>{{city.id}}</div>
+
+        </h3>
+    </div>
+    <div class="panel-body">
         <label>name: </label>
         <input [(ngModel)]="city.name" placeholder="name"/>
         <label>district: </label>            
         <input [(ngModel)]="city.district" placeholder="district"/>
-        <label>district: </label>            
+        <label>Population: </label>            
         <input [(ngModel)]="city.population" placeholder="population"/>
+    </div>
+    <div class="panel-footer">
+        <button>Save Changes</button>
     </div>
 </div>

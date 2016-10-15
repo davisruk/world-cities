@@ -5,10 +5,9 @@ import { CityList } from './model/city-list';
 import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'my-app',
-    template: `<h1>{{title}}</h1>
-                <city-detail [city]="selectedCity"></city-detail>
-                <city-list [cityList]="cityList" (cityChange)="selectedCityChange($event)"></city-list>
-                `,
+    moduleId: module.id,
+    templateUrl: "app.component.html",
+    styleUrls: ["bootstrap.min.css"],
     providers: [CityService]
 })
 export class AppComponent implements OnInit{ 

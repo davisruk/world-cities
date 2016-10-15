@@ -6,13 +6,19 @@ import {City} from '../model/city';
     moduleId: module.id,
     selector: 'city-list',
     templateUrl: 'city-list.component.html',
-    styleUrls:['city-list.component.css']
+    styleUrls:['city-list.component.css', "../bootstrap.min.css"]
 })
 export class CityListComponent implements OnInit {
     constructor (private cityService:CityService){}
+
+    @Input()
+    selectedCity:City;
+
     @Input()
     cityList:CityList;
+
     @Output() cityChange = new EventEmitter();
+
     ngOnInit() { }
 
     getNextCities():void{
@@ -30,6 +36,7 @@ export class CityListComponent implements OnInit {
         this.cityService.getCityListLast(this.cityList).subscribe(p => this.cityList = p);
     }
     onSelect(city: City): void {
+    this.selectedCity = city;
     this.cityChange.emit({value:city});
     }
     isFirstPage():boolean {

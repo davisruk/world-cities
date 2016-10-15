@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					{{title}}
+				</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<city-list [cityList]="cityList" (cityChange)="selectedCityChange($event)"></city-list>
+		</div>
+		<div class="col-md-6">
+            <city-detail [city]="selectedCity"></city-detail>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Heading
+					</h3>
+				</div>
+				<div class="panel-body">
+					Country Detail Here
+				</div>
+				<div class="panel-footer">
+					Some buttons for async behaviour here
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			A Rich Davis Joint
+		</div>
+	</div>
+</div>
