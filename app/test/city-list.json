@@ -1,0 +1,331 @@
+{
+  "_embedded" : {
+    "cities" : [ {
+      "district" : "Kabol",
+      "name" : "Kabul",
+      "population" : 1780000,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/1"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/1"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/1/country"
+        }
+      }
+    }, {
+      "district" : "Qandahar",
+      "name" : "Qandahar",
+      "population" : 237500,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/2"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/2"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/2/country"
+        }
+      }
+    }, {
+      "district" : "Herat",
+      "name" : "Herat",
+      "population" : 186800,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/3"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/3"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/3/country"
+        }
+      }
+    }, {
+      "district" : "Balkh",
+      "name" : "Mazar-e-Sharif",
+      "population" : 127800,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/4"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/4"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/4/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Holland",
+      "name" : "Amsterdam",
+      "population" : 731200,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/5"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/5"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/5/country"
+        }
+      }
+    }, {
+      "district" : "Zuid-Holland",
+      "name" : "Rotterdam",
+      "population" : 593321,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/6"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/6"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/6/country"
+        }
+      }
+    }, {
+      "district" : "Zuid-Holland",
+      "name" : "Haag",
+      "population" : 440900,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/7"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/7"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/7/country"
+        }
+      }
+    }, {
+      "district" : "Utrecht",
+      "name" : "Utrecht",
+      "population" : 234323,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/8"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/8"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/8/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Brabant",
+      "name" : "Eindhoven",
+      "population" : 201843,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/9"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/9"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/9/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Brabant",
+      "name" : "Tilburg",
+      "population" : 193238,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/10"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/10"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/10/country"
+        }
+      }
+    }, {
+      "district" : "Groningen",
+      "name" : "Groningen",
+      "population" : 172701,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/11"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/11"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/11/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Brabant",
+      "name" : "Breda",
+      "population" : 160398,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/12"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/12"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/12/country"
+        }
+      }
+    }, {
+      "district" : "Gelderland",
+      "name" : "Apeldoorn",
+      "population" : 153491,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/13"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/13"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/13/country"
+        }
+      }
+    }, {
+      "district" : "Gelderland",
+      "name" : "Nijmegen",
+      "population" : 152463,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/14"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/14"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/14/country"
+        }
+      }
+    }, {
+      "district" : "Overijssel",
+      "name" : "Enschede",
+      "population" : 149544,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/15"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/15"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/15/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Holland",
+      "name" : "Haarlem",
+      "population" : 148772,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/16"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/16"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/16/country"
+        }
+      }
+    }, {
+      "district" : "Flevoland",
+      "name" : "Almere",
+      "population" : 142465,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/17"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/17"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/17/country"
+        }
+      }
+    }, {
+      "district" : "Gelderland",
+      "name" : "Arnhem",
+      "population" : 138020,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/18"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/18"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/18/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Holland",
+      "name" : "Zaanstad",
+      "population" : 135621,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/19"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/19"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/19/country"
+        }
+      }
+    }, {
+      "district" : "Noord-Brabant",
+      "name" : "Â´s-Hertogenbosch",
+      "population" : 129170,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/20"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/20"
+        },
+        "country" : {
+          "href" : "http://localhost:8080/cities/20/country"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "http://localhost:8080/cities?page=0&size=20"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/cities"
+    },
+    "next" : {
+      "href" : "http://localhost:8080/cities?page=1&size=20"
+    },
+    "last" : {
+      "href" : "http://localhost:8080/cities?page=203&size=20"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/cities"
+    },
+    "search" : {
+      "href" : "http://localhost:8080/cities/search"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 4080,
+    "totalPages" : 204,
+    "number" : 0
+  }
+}

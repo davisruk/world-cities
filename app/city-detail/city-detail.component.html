@@ -1,0 +1,12 @@
+<div *ngIf="city">
+    <h2>{{city.name}} details</h2>
+    <div><label>id: </label>{{city.id}}</div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="city.name" placeholder="name"/>
+        <label>district: </label>            
+        <input [(ngModel)]="city.district" placeholder="district"/>
+        <label>district: </label>            
+        <input [(ngModel)]="city.population" placeholder="population"/>
+    </div>
+</div>

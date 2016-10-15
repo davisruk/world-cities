@@ -1,0 +1,12 @@
+<div  *ngIf="cityList">
+    <h2>List of Cities</h2>
+    <ul>
+        <li *ngFor = "let city of cityList.cities" (click)="onSelect(city)">
+            <span class="badge">{{city.id}}</span> {{city.name}}
+        </li>
+    </ul>
+    <button [disabled]="isFirstPage()" (click)="getFirstCities()">First Page</button>
+    <button [disabled]="isFirstPage()" (click)="getPrevCities()">Previous</button>
+    <button [disabled]="isLastPage()" (click)="getNextCities()">Next</button>
+    <button [disabled]="isLastPage()" (click)="getLastCities()">Last</button>
+</div>
