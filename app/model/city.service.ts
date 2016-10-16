@@ -10,7 +10,9 @@ import {ListInfo} from './city-list';
 export class CityService{
     
     constructor(private http:Http){};
-    citiesUrl = "http://localhost:8080/cities";    
+
+    citiesUrl = "http://localhost:8080/cities";
+    citiesSearchUrl = "http://localhost:8080/cities/search/findByNameContaining?name=";   
     currentDelay:Number = 0;
     // example to show structure of JSON 
     getCity():City{
@@ -61,23 +63,20 @@ export class CityService{
         // special case as our REST API only handles next
         // prev needs to take one off the current page
         // and substute it into the next page URL
-        let url=cl._links.next.href;
-        let nextPage:string;
-        if (cl.page.num == cl.page.totalPages - 1)
-            nextPage = "page="+cl.page.num;
-        else
-            nextPage = "page="+(cl.page.num + 1);
-        
+        let url=cl._links.first.href;
         let prevPage = "page="+(cl.page.num - 1);
-        let newUrl = url.replace(nextPage, prevPage);
+        let newUrl = url.replace("page=0", prevPage);
         return this.getCitiesByUrl(newUrl);
     }
 
+    search(term: string): Observable<CityList> {
+        return this.getCitiesByUrl(`${this.citiesSearchUrl}${term}`);
+    }
+
     getCitiesByUrl(url:string): Observable<CityList>{
-        console.log(`Delay = ${this.currentDelay}`);
         if (this.currentDelay != undefined)
             url = url + `&delay=${this.currentDelay}`;
-        console.log(url);
+
         let cities$ = this.http
             .get(url, {headers: this.getHeaders()})
             .map(mapCityList);
@@ -96,6 +95,7 @@ export class CityService{
         return Promise.reject(error.message || error);
     }
 }
+
 
 function toCity(r:Response): City{
     let city = <City><any> r;
@@ -134,11 +134,12 @@ function mapPage(r:Response): ListInfo{
  }
 function mapCityListLinks(r:Response): any{
     let links$ = r.json()._links;
-    return ({first : {href:links$.first.href},
-            next : {href: links$.next==undefined ? links$.last.href : links$.next.href}, // special case - next is undefined if this is the last page
-            last : {href:links$.last.href},
-            profile : {href:links$.profile.href},
-            search : {href:links$.search.href}
+    return ({first : {href:links$.first==undefined ? "none" : links$.first.href}, // first is never undefined
+            next : {href: links$.next==undefined ? "none" : links$.next.href},
+            last : {href:links$.last==undefined ? "none" : links$.last.href},
+            profile : {href:links$.profile==undefined ? "none" : links$.profile.href},
+            search : {href:links$.search==undefined ? "none" : links$.search.href},
+            self: {href:links$.self==undefined ? "none" : links$.self.href}
             });
 }
 function printCityToConsole(m:string, c:City):void{
