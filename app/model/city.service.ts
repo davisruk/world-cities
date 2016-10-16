@@ -11,6 +11,7 @@ export class CityService{
     
     constructor(private http:Http){};
     citiesUrl = "http://localhost:8080/cities";    
+    currentDelay:Number = 0;
     // example to show structure of JSON 
     getCity():City{
         return {    "id": 1,
@@ -24,6 +25,9 @@ export class CityService{
                 };
     }
 
+    setCurrentDelay(delay:Number){
+        this.currentDelay=delay;
+    }
     getCityById(id:number): Observable<City>{
         let city$ = this.http
             .get(`${this.citiesUrl}/${id}`, {headers: this.getHeaders()})
@@ -70,10 +74,13 @@ export class CityService{
     }
 
     getCitiesByUrl(url:string): Observable<CityList>{
+        console.log(`Delay = ${this.currentDelay}`);
+        if (this.currentDelay != undefined)
+            url = url + `&delay=${this.currentDelay}`;
+        console.log(url);
         let cities$ = this.http
             .get(url, {headers: this.getHeaders()})
             .map(mapCityList);
-            console.log('Returning:', cities$);
       return cities$;
  
     }

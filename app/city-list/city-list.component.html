@@ -2,12 +2,14 @@
     <div class="panel-heading">
         <h3 class="panel-title">
             City List
+            <div class="rightaligned"><label>Delay:</label><input [(ngModel)]="delayInSecs" placeholder="delay"/></div>
         </h3>
+        
     </div>
     <div class="panel-body">
         <ul class="cities">
             <li *ngFor = "let city of cityList.cities" (click)="onSelect(city)"
-             [class.selected]="city === selectedCity">
+             [class.selected]="getStyleForSelection(city)">
                 <span class="badge">{{city.id}}</span> {{city.name}}
             </li>
         </ul>
