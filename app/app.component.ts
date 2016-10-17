@@ -26,13 +26,15 @@ export class AppComponent implements OnInit{
     //--Data Model--//
     
     ngOnInit():void{
-        this.cityService.getCityById(1).subscribe(p => this.selectedCity = p);
-        this.cityService.getCityList().subscribe(p => this.cityList = p);
-        this.countryService.getCountryByCode("AFG")
-            .subscribe(p=>{
-                            this.selectedCityCountry=p;
-                            this.cityService.getCityById(this.selectedCityCountry.capital).subscribe(p=>this.selectedCityCountryCapital=p);
-            });
+        this.cityService.getCityList().subscribe(p => { 
+            this.cityList = p;
+            this.selectedCity = this.cityList.cities[0];
+            this.countryService.getCountryForCity(this.selectedCity)
+                .subscribe(p=>{
+                    this.selectedCityCountry=p;
+                    this.cityService.getCityById(this.selectedCityCountry.capital).subscribe(p=>this.selectedCityCountryCapital=p);
+                });
+        });
     }
 
      selectedCityChange(city:any) {
