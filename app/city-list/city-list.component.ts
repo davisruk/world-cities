@@ -95,7 +95,7 @@ export class CityListComponent implements OnInit {
 
     getStyleForSelection(city:City):boolean{
         if (city != undefined && this.selectedCity != undefined)
-            return this.selectedCity.name == city.name;
+            return this.selectedCity.id == city.id;
         else
             return false;
     }        

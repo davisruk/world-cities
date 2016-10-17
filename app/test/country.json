@@ -1,0 +1,29 @@
+{ 
+ "capital" : 1,
+  "code2" : "AF",
+  "continent" : "Asia",
+  "gnp" : 5976.0,
+  "governmentForm" : "Islamic Emirate",
+  "headOfState" : "Mohammad Omar",
+  "indepYear" : 1919,
+  "lifeExpectancy" : 45.9,
+  "localName" : "Afganistan/Afqanestan",
+  "name" : "Afghanistan",
+  "population" : 22720000,
+  "region" : "Southern and Central Asia",
+  "surfaceArea" : 652090.0,
+  "gnpold" : null,
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/countries/AFG"
+    },
+    "country" : {
+      "href" : "http://localhost:8080/countries/AFG"
+    },
+    "countrylanguages" : {
+      "href" : "http://localhost:8080/countries/AFG/countrylanguages"
+    },
+    "cities" : {
+      "href" : "http://localhost:8080/countries/AFG/cities"    }
+  }
+}

@@ -14,18 +14,6 @@ export class CityService{
     citiesUrl = "http://localhost:8080/cities";
     citiesSearchUrl = "http://localhost:8080/cities/search/findByNameContaining?name=";   
     currentDelay:Number = 0;
-    // example to show structure of JSON 
-    getCity():City{
-        return {    "id": 1,
-                    "district":"Kabol",
-                    "name":"Kabul",
-                    "population":1780000,
-                    "_links": {  "self":{"href":"http://localhost:8080/cities/1"},
-                                "city":{"href":"http://localhost:8080/cities/1"},
-                                "country":{"href":"http://localhost:8080/cities/1/country"}
-                            }
-                };
-    }
 
     setCurrentDelay(delay:Number){
         this.currentDelay=delay;
