@@ -32,7 +32,7 @@ export class CityListComponent implements OnInit {
     delayInSecs:Number;
     
     private searchTerms = new Subject<string>();
-
+ 
     @Input()
     selectedCity:City;
 
@@ -54,34 +54,35 @@ export class CityListComponent implements OnInit {
             return Observable.of<CityList>();
         });
         this.observableList.subscribe(p => this.cityList = p);
+        
     }
-  
+
+    search(term: string): void {
+        this.searchTerms.next(term);
+    }
+
+
+    processDelay(term: string): void {
+        if (term == undefined || term == "")
+            term="0";
+        this.delayInSecs = Number.parseInt(term);
+    }
+
     getNextCities():void{
-        if (!(this.delayInSecs instanceof Number))
-            this.delayInSecs = 0;
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListNext(this.cityList).subscribe(p => this.cityList = p);
     }
     
     getPrevCities():void{
-        if (!(this.delayInSecs instanceof Number))
-            this.delayInSecs = 0;
-
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListPrev(this.cityList).subscribe(p => this.cityList = p);
     }
     
     getFirstCities():void{
-        if (!(this.delayInSecs instanceof Number))
-            this.delayInSecs = 0;
-
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListFirst(this.cityList).subscribe(p => this.cityList = p);
     }
     getLastCities():void{
-        if (!(this.delayInSecs instanceof Number))
-            this.delayInSecs = 0;
-
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListLast(this.cityList).subscribe(p => this.cityList = p);
     }
