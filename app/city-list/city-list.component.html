@@ -3,7 +3,7 @@
         <h3 class="panel-title">
             City List
             <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-            <div class="rightaligned"><label>Delay:</label><input [(ngModel)]="delayInSecs" placeholder="delay"/></div>
+            <div class="rightaligned"><label>Delay:</label><input ng-pattern="\d*" [(ngModel)]="delayInSecs" placeholder="delay"/></div>
         </h3>
         
     </div>

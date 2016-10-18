@@ -11,7 +11,7 @@ export class CityService{
     
     constructor(private http:Http){};
 
-    citiesUrl = "http://localhost:8080/cities?size=15";
+    citiesUrl = "http://localhost:8080/cities";
     citiesSearchUrl = "http://localhost:8080/cities/search/findByNameContaining?name=";   
     currentDelay:Number = 0;
 
@@ -28,7 +28,7 @@ export class CityService{
 
     getCityList(): Observable<CityList>{
         let cities$ = this.http
-            .get(`${this.citiesUrl}`, {headers: this.getHeaders()})
+            .get(`${this.citiesUrl}?size=10`, {headers: this.getHeaders()})
             .map(mapCityList);
             console.log('Returning:', cities$);
       return cities$;
@@ -58,7 +58,7 @@ export class CityService{
     }
 
     search(term: string): Observable<CityList> {
-        return this.getCitiesByUrl(`${this.citiesSearchUrl}${term}&size=15`);
+        return this.getCitiesByUrl(`${this.citiesSearchUrl}${term}&size=10`);
     }
 
     getCitiesByUrl(url:string): Observable<CityList>{

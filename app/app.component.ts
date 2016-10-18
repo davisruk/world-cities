@@ -32,8 +32,10 @@ export class AppComponent implements OnInit{
             this.countryService.getCountryForCity(this.selectedCity)
                 .subscribe(p=>{
                     this.selectedCityCountry=p;
-                    this.cityService.getCityById(this.selectedCityCountry.capital).subscribe(p=>this.selectedCityCountryCapital=p);
-                });
+                    this.cityService.getCityById(this.selectedCityCountry.capital)
+                    .subscribe(c=>this.selectedCityCountryCapital=c);
+                }
+            );
         });
     }
 
@@ -42,8 +44,10 @@ export class AppComponent implements OnInit{
         this.countryService.getCountryForCity(this.selectedCity)
             .subscribe(p=>{
                             this.selectedCityCountry=p;
-                            this.cityService.getCityById(this.selectedCityCountry.capital).subscribe(p=>this.selectedCityCountryCapital=p);        
-        });
+                            this.cityService.getCityById(this.selectedCityCountry.capital)
+                            .subscribe(c=>this.selectedCityCountryCapital=c);        
+            }
+        );
      }
 
 }

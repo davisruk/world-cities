@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,OnChanges, SimpleChange } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable }        from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
@@ -26,7 +26,8 @@ import {City} from '../model/city';
 })
 
 export class CityListComponent implements OnInit {
-    constructor (private cityService:CityService){}
+    constructor (private cityService:CityService){
+    }
 
     delayInSecs:Number;
     
@@ -43,6 +44,7 @@ export class CityListComponent implements OnInit {
     @Output() cityChange = new EventEmitter();
 
     ngOnInit() {
+        this.delayInSecs = 0;
         this.observableList = this.searchTerms
         .debounceTime(300)
         .distinctUntilChanged()
@@ -53,30 +55,33 @@ export class CityListComponent implements OnInit {
         });
         this.observableList.subscribe(p => this.cityList = p);
     }
-
-    // Push a search term into the observable stream.
-    search(term: string): void {
-        // if we delete the entire term then get the entire list
-        if (term == undefined || term.length==0)
-            this.cityService.getCityList().subscribe(p => this.cityList = p);
-        this.searchTerms.next(term);
-    }
-
+  
     getNextCities():void{
+        if (!(this.delayInSecs instanceof Number))
+            this.delayInSecs = 0;
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListNext(this.cityList).subscribe(p => this.cityList = p);
     }
     
     getPrevCities():void{
+        if (!(this.delayInSecs instanceof Number))
+            this.delayInSecs = 0;
+
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListPrev(this.cityList).subscribe(p => this.cityList = p);
     }
     
     getFirstCities():void{
+        if (!(this.delayInSecs instanceof Number))
+            this.delayInSecs = 0;
+
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListFirst(this.cityList).subscribe(p => this.cityList = p);
     }
     getLastCities():void{
+        if (!(this.delayInSecs instanceof Number))
+            this.delayInSecs = 0;
+
         this.cityService.setCurrentDelay(this.delayInSecs);
         this.cityService.getCityListLast(this.cityList).subscribe(p => this.cityList = p);
     }
