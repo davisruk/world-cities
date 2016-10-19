@@ -29,7 +29,8 @@ export class CityListComponent implements OnInit {
     constructor (private cityService:CityService){
     }
 
-    delayInSecs:Number;
+    private delayInSecs:Number;
+    private asyncProcessing:boolean;
     
     private searchTerms = new Subject<string>();
  
@@ -45,6 +46,7 @@ export class CityListComponent implements OnInit {
 
     ngOnInit() {
         this.delayInSecs = 0;
+        this.asyncProcessing = false;
         this.observableList = this.searchTerms
         .debounceTime(300)
         .distinctUntilChanged()
@@ -70,21 +72,25 @@ export class CityListComponent implements OnInit {
 
     getNextCities():void{
         this.cityService.setCurrentDelay(this.delayInSecs);
-        this.cityService.getCityListNext(this.cityList).subscribe(p => this.cityList = p);
+        this.asyncProcessing = true;
+        this.cityService.getCityListNext(this.cityList).subscribe(p => {this.cityList = p; this.asyncProcessing=false});
     }
     
     getPrevCities():void{
+        this.asyncProcessing = true;
         this.cityService.setCurrentDelay(this.delayInSecs);
-        this.cityService.getCityListPrev(this.cityList).subscribe(p => this.cityList = p);
+        this.cityService.getCityListPrev(this.cityList).subscribe(p => {this.cityList = p;this.asyncProcessing=false});
     }
     
     getFirstCities():void{
+        this.asyncProcessing = true;
         this.cityService.setCurrentDelay(this.delayInSecs);
-        this.cityService.getCityListFirst(this.cityList).subscribe(p => this.cityList = p);
+        this.cityService.getCityListFirst(this.cityList).subscribe(p => {this.cityList = p;this.asyncProcessing=false});
     }
     getLastCities():void{
+        this.asyncProcessing = true;
         this.cityService.setCurrentDelay(this.delayInSecs);
-        this.cityService.getCityListLast(this.cityList).subscribe(p => this.cityList = p);
+        this.cityService.getCityListLast(this.cityList).subscribe(p => {this.cityList = p;this.asyncProcessing=false});
     }
 
     onSelect(city: City): void {
@@ -93,10 +99,10 @@ export class CityListComponent implements OnInit {
     }
 
     isFirstPage():boolean {
-        return this.cityList.page.num == 0;
+        return this.asyncProcessing == true || this.cityList.page.num == 0;
     }
     isLastPage():boolean {
-        return this.cityList.page.num == this.cityList.page.totalPages - 1;
+        return this.asyncProcessing == true || this.cityList.page.num == this.cityList.page.totalPages - 1;
     }
 
     getStyleForSelection(city:City):boolean{
