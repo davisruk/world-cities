@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -61,6 +61,13 @@ export class CityService{
         return this.getCitiesByUrl(`${this.citiesSearchUrl}${term}&size=10`);
     }
 
+    updateCity(city:City): Observable<City>{
+        console.log (JSON.stringify(city));
+        let options = new RequestOptions({ headers: this.getHeaders() });
+        let city$=this.http.put(`${this.citiesUrl}/${city.id}`, JSON.stringify(city), options).map(mapCity);
+        return city$;        
+    }
+
     getCitiesByUrl(url:string): Observable<CityList>{
         if (this.currentDelay != undefined)
             url = url + `&delay=${this.currentDelay}`;
@@ -73,8 +80,10 @@ export class CityService{
     }
 
     private getHeaders(){
+        //let headers = new Headers({'Content-Type': 'application/json'});
         let headers = new Headers();
-        headers.append('Accept', 'application/json');
+        headers.append('Accept','application/json');
+        headers.append('Content-Type','application/json');
         return headers;
     }
 

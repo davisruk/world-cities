@@ -31,7 +31,6 @@ export class CityListComponent implements OnInit {
 
     private delayInSecs:Number;
     private asyncProcessing:boolean;
-    
     private searchTerms = new Subject<string>();
  
     @Input()
@@ -59,6 +58,7 @@ export class CityListComponent implements OnInit {
         
     }
 
+  
     search(term: string): void {
         this.searchTerms.next(term);
     }
