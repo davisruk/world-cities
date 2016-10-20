@@ -5,13 +5,28 @@
         </h3>
     </div>
     <div class="panel-body">
-        <table>
-            <tr><td>Name:</td><td>{{country.name}}</td><td>Capital:</td><td *ngIf="capitalCity">{{capitalCity.name}}</td></tr>
-            <tr><td>Head of State:</td><td>{{country.headOfState}}</td><td>Government Form:</td><td>{{country.governmentForm}}</td></tr>
-            <tr><td>Independence Year:</td><td>{{country.indepYear}}</td><td>Life Expectancy:</td><td>{{country.lifeExpectancy}} Years</td></tr>
-            <tr><td>Region:</td><td>{{country.region}}</td><td>Continent:</td><td>{{country.continent}}</td></tr>
-            <tr><td>Surface Area:</td><td>{{country.surfaceArea}} Km<sup>2</sup></td><td>Population</td><td>{{country.population}}</td></tr>
-         </table>
+        <div class="rTable">
+            <div class="rTableRow">
+                <div class="rTableCellLabel">Name:</div><div class="rTableCellData">{{country.name}}</div>
+                <div class="rTableCellLabel">Capital:</div><div *ngIf="capitalCity" class="rTableCell">{{capitalCity.name}}</div>
+            </div>
+            <div class="rTableRow">
+                <div class="rTableCellLabel">Head of State:</div><div class="rTableCellData">{{country.headOfState}}</div>
+                <div class="rTableCellLabel">Government Form:</div><div class="rTableCellData">{{country.governmentForm}}</div>
+            </div>
+            <div class="rTableRow">
+                <div class="rTableCellLabel">Independence Year:</div><div class="rTableCellData">{{country.indepYear}}</div>
+                <div class="rTableCellLabel">Life Expectancy:</div><div class="rTableCellData">{{country.lifeExpectancy}} Years</div>
+            </div>
+            <div class="rTableRow">
+                <div class="rTableCellLabel">Region:</div><div class="rTableCellData">{{country.region}}</div>
+                <div class="rTableCellLabel">Continent:</div><div class="rTableCellData">{{country.continent}}</div>
+            </div>
+            <div class="rTableRow">
+                <div class="rTableCellLabel">Surface Area:</div><div class="rTableCellData">{{country.surfaceArea | number}} Km<sup>2</sup></div>
+                <div class="rTableCellLabel">Population</div><div class="rTableCellData">{{country.population | number}}</div>
+            </div>
+         </div>
     </div>
     <div class="panel-footer">
         

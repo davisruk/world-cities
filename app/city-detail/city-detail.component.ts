@@ -20,5 +20,10 @@ export class CityDetailComponent implements OnInit {
             if (p!=undefined)
                 this.city=p});
     }
+    formatNumber (event:any){
+        let popStr:string = event ;
+        popStr = popStr.replace(/,/g, '');
+        this.city.population = Number.parseInt(popStr);
+    }
 
 }

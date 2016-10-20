@@ -11,7 +11,7 @@
         <label>district: </label>            
         <input [(ngModel)]="city.district" placeholder="district"/>
         <label>Population: </label>            
-        <input [(ngModel)]="city.population" placeholder="population"/>
+        <input [ngModel]="city.population | number" (ngModelChange)="formatNumber($event)" placeholder="population"/>
     </div>
     <div class="panel-footer">
         <button (click)="updateCity()">Save Changes</button>

@@ -7,7 +7,7 @@ import {Country} from "../model/country";
     moduleId: module.id,
     selector: 'country-detail',
     templateUrl: 'country-detail.component.html',
-    styleUrls: ["../bootstrap.min.css"]
+    styleUrls: ["../bootstrap.min.css", "country-detail.component.css"]
 })
 export class CountryDetailComponent implements OnInit {
     constructor() { }
